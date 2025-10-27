@@ -26,7 +26,7 @@ O projeto implementa as seguintes funcionalidades:
 
 **Resultados obtidos:**
 
-Cobertura de testes em 70% do código, incluindo testes unitários e de views.
+Cobertura de testes em 70%+ do código, incluindo testes unitários e de views.
 
 Fluxo completo de registro de progresso e geração de certificados testado e funcional.
 
@@ -86,10 +86,12 @@ Arquitetura Modular: Cada app (courses, lessons, progress, certificates, student
 
 Uso de Celery e RabbitMQ: Para tarefas assíncronas, como geração de certificados, garantindo que processos longos não bloqueiem o backend.
 
-Serializer e Views baseadas em DRF: API clara e consistente, com endpoints bem definidos.
+Serializers e Views baseadas em DRF: API clara e consistente, com endpoints bem definidos.
 
 Custom UserProfile: Extensão do modelo de usuário Django para armazenar informações específicas de alunos.
 
 Fallback para geração de certificados: Caso o OpenAI não esteja disponível, é usado texto padrão para garantir funcionalidade.
 
 Testes automatizados: Cobertura de endpoints críticos e lógica de negócios, garantindo confiabilidade.
+
+Boas práticas de desenvolvimento: Seguindo princípios de DDD e SOLID, commits granulares e documentação clara.
