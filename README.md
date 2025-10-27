@@ -1,6 +1,6 @@
 # AluConnect
 
-**AluConnect** é um backend desenvolvido em **Python 3.10 com Django e Django REST Framework, integrado a PostgreSQL, RabbitMQ e Celery**, voltado para gerenciamento de cursos, progresso de alunos e emissão de certificados.
+**AluConnect** é um backend desenvolvido em **Python 3.10 com Django e Django REST Framework, integrado a PostgreSQL, RabbitMQ e Celery, todo o projeto feito com docker.**, voltado para gerenciamento de cursos, progresso de alunos e emissão de certificados.
 
 ## 1️⃣ Funcionalidades e Resultados do Case
 
@@ -31,19 +31,19 @@ Clone o repositório:
 git clone https://github.com/seu-usuario/AluConnect.git
 cd AluConnect/src
 
+# subir containers 
 
-Crie um ambiente virtual:
+sudo docker compose up -d --build
 
-python3.10 -m venv env
-source env/bin/activate
+# executar testes 
 
+docker compose run --rm --entrypoint "" web pytest --cov=. --cov-report=term
 
-Instale dependências:
+# verificar logs do docker
 
-pip install -r requirements.txt
+docker compose logs -f
 
-
-Configure variáveis de ambiente em um arquivo .env:
+# Configure variáveis de ambiente em um arquivo .env:
 
 DJANGO_SECRET_KEY=your_secret_key
 DATABASE_URL=postgres://user:password@localhost:5432/aluconnect
@@ -51,22 +51,9 @@ RABBITMQ_URL=amqp://guest:guest@localhost:5672//
 OPENAI_API_KEY=your_openai_api_key
 
 
-Execute migrations:
 
-python manage.py migrate
+O backend estará disponível em http://localhost:8000. Tendo varias possibilidades de teste via curl ou com teste automatizado com cobertura de 74% do projeto.
 
-
-(Opcional) Popule dados iniciais:
-
-python manage.py loaddata initial_data.json
-
-
-Execute o servidor:
-
-python manage.py runserver
-
-
-O backend estará disponível em http://localhost:8000.
 
 ## 3️⃣ Como Rodar Testes
 
@@ -75,7 +62,7 @@ Rodar todos os testes:
 pytest
 
 
-Gerar relatório de cobertura:
+# Gerar relatório de cobertura:
 
 pytest --cov=.
 coverage html
