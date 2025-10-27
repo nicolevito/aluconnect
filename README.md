@@ -2,6 +2,14 @@
 
 **AluConnect** é um backend desenvolvido em **Python 3.10 com Django e Django REST Framework, integrado a PostgreSQL, RabbitMQ e Celery, todo o projeto feito com docker.**, voltado para gerenciamento de cursos, progresso de alunos e emissão de certificados.
 
+## Requisitos do computador:
+
+Componente -------> Recomendado -------> Observações
+CPU -------> 4 núcleos ou mais -------> Garante que Celery + Gunicorn + PostgreSQL rodem simultaneamente sem travar
+RAM ------->  8 GB ou mais ------->  Permite rodar containers e testes unitários com cobertura completa sem lentidão
+Armazenamento -------> 	50 GB -------> livre	Docker tende a crescer com imagens e volumes de banco de dados
+Rede -------> Sim -------> 	Necessário para baixar pacotes, OpenAI API e imagens Docker
+
 ## 1️⃣ Funcionalidades e Resultados do Case
 
 O projeto implementa as seguintes funcionalidades:
@@ -30,6 +38,8 @@ Clone o repositório:
 
 git clone https://github.com/seu-usuario/AluConnect.git
 cd AluConnect/src
+
+Configurar o .env
 
 # subir containers 
 
