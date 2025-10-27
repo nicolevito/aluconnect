@@ -1,0 +1,16 @@
+Django>=4.2
+djangorestframework
+djangorestframework-simplejwt
+psycopg2-binary
+gunicorn
+celery>=5.2
+django-celery-beat
+django-celery-results
+python-dotenv
+flower
+openai==0.28
+pytest 
+pytest-django 
+pytest-cov 
+factory_boy 
+freezegun
