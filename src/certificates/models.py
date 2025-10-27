@@ -1,4 +1,3 @@
-# certificates/models.py
 from django.db import models
 from authentication.models import UserProfile
 from courses.models import Course
