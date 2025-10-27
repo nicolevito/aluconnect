@@ -16,7 +16,6 @@ class GenerateCertificateAPIView(APIView):
         except UserProfile.DoesNotExist:
             return Response({"detail": "Aluno não encontrado"}, status=status.HTTP_404_NOT_FOUND)
 
-        # Adiciona à fila Celery
         task = generate_certificate.delay(student.user_id, course_id)
         return Response({"task_id": task.id, "detail": "Certificado adicionado à fila"}, status=status.HTTP_202_ACCEPTED)
 

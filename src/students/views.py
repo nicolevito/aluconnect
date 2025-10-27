@@ -3,13 +3,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from authentication.models import User
 from rest_framework.permissions import IsAuthenticated
-from authentication.custom_auth import TokenAuthentication
 
 from .serializers import StudentSerializer
 
 class StudentListAPIView(APIView):
     permission_classes = [IsAuthenticated]
-    authentication_classes = [TokenAuthentication]
 
     def get(self, request):
         students = User.objects.filter(userprofile__is_instructor=False)
@@ -18,7 +16,6 @@ class StudentListAPIView(APIView):
 
 class StudentDetailAPIView(APIView):
     permission_classes = [IsAuthenticated]
-    authentication_classes = [TokenAuthentication]
 
     def get(self, request, pk):
         try:
@@ -30,7 +27,6 @@ class StudentDetailAPIView(APIView):
 
 class StudentCreateAPIView(APIView):
     permission_classes = [IsAuthenticated]
-    authentication_classes = [TokenAuthentication]
 
     def post(self, request):
         serializer = StudentSerializer(data=request.data)
@@ -42,7 +38,6 @@ class StudentCreateAPIView(APIView):
 
 class StudentUpdateAPIView(APIView):
     permission_classes = [IsAuthenticated]
-    authentication_classes = [TokenAuthentication]
 
     def put(self, request, pk):
         try:

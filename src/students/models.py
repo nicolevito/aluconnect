@@ -1,4 +1,3 @@
-# students/models.py
 from django.db import models
 from authentication.models import User
 from courses.models import Course

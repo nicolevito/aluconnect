@@ -1,6 +1,10 @@
 import os
 from pathlib import Path
 
+
+'''
+Django settings for aluconnect project.
+'''
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("SECRET_KEY", "supersecretdevkey")
@@ -17,7 +21,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "authentication",
-    "common",
     "courses",
     "students",
     "lessons",
@@ -60,7 +63,6 @@ TEMPLATES = [
 WSGI_APPLICATION = "aluconnect.wsgi.application"
 ASGI_APPLICATION = "aluconnect.asgi.application"
 
-# Database
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
