@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  web:
+    command: python manage.py runserver 0.0.0.0:8000
+    environment:
+      DJANGO_SETTINGS_MODULE: aluconnect.settings
+      DEBUG: "True"
+
+  celery:
+    command: celery -A aluconnect worker -l info --concurrency=4 --beat
+    environment:
+      DJANGO_SETTINGS_MODULE: aluconnect.settings
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+
+  celery-beat:
+    command: celery -A aluconnect beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    environment:
+      DJANGO_SETTINGS_MODULE: aluconnect.settings
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+
+  flower:
+    command: celery -A aluconnect flower --broker=${CELERY_BROKER_URL}
